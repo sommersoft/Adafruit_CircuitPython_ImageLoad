@@ -26,4 +26,3 @@ jobs:
         run: |
           for file in $( find . -name '*.py' -printf "%P\n" | grep -E '^adafruit' ); do echo pylint is checking: $file && pylint $file; done
           ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace examples/*.py)
-      - name: Build assets

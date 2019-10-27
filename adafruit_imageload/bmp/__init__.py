@@ -41,7 +41,7 @@ def load(file, *, bitmap=None, palette=None):
          Will be skipped if None
        :param object palette: Type to store the palette. Must have API similar to
          `displayio.Palette`. Will be skipped if None"""
-    file.seek(10)
+          file.seek(10)
     data_start = int.from_bytes(file.read(4), 'little')
     # f.seek(14)
     # bmp_header_length = int.from_bytes(file.read(4), 'little')
@@ -60,9 +60,9 @@ def load(file, *, bitmap=None, palette=None):
         raise NotImplementedError("True color BMP unsupported")
 
     if compression > 2:
-        raise NotImplementedError("bitmask compression unsupported")
+    raise NotImplementedError("bitmask compression unsupported")
 
-    if colors == 0:
+    if colors == 0
         colors = 2 ** color_depth
     from . import indexed
     return indexed.load(file, width, height, data_start, colors, color_depth,

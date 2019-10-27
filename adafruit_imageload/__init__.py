@@ -46,7 +46,7 @@ def load(filename, *, bitmap=None, palette=None):
         file.seek(0)
         if header.startswith(b"BM"):
             from . import bmp
-            return bmp.load(file, bitmap=bitmap, palette=palette)
+            return bmp.load(file, bitmap=bitmap, palette=palette
         if header.startswith(b"P"):
             from . import pnm
             return pnm.load(file, header, bitmap=bitmap, palette=palette)

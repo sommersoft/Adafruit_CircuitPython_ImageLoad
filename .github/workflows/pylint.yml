@@ -7,23 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python 3.6
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.6
-    - name: Versions
-      run: |
-        python3 --version
-    - uses: actions/checkout@v1
-      with:
-        submodules: true
-    - name: Install deps
-      run: |
-        pip install -r requirements.txt
-        pip install --force-reinstall pylint==1.9.2
-    - name: Library version
-      run: git describe --dirty --always --tags
-    - name: PyLint
-      run: |
-        for file in $( find . -name '*.py' -printf "%P\n" | grep -E '^adafruit' ); do echo pylint is checking: $file && pylint $file; done
-        ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace examples/*.py)
-    - name: Build assets
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+      - name: Versions
+        run: |
+          python3 --version
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          pip install --force-reinstall pylint==1.9.2
+      - name: Library version
+        run: git describe --dirty --always --tags
+      - name: PyLint
+        run: |
+          for file in $( find . -name '*.py' -printf "%P\n" | grep -E '^adafruit' ); do echo pylint is checking: $file && pylint $file; done
+          ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace examples/*.py)
+      - name: Build assets
